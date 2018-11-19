@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
     s.dependency 'Amplitude-iOS', '~> 4.0.4'
 
     # 8
-    s.source_files = "Veleza/**/*.{swift}"
+    s.source_files = "VelezaSDK/**/*.{swift}"
 
     # 9
-    s.resources = "Veleza/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf}"
+    s.resources = "VelezaSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf}"
 
     # 10
     s.swift_version = "3.2"
