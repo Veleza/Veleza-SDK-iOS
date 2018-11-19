@@ -8,7 +8,7 @@
 
 import Foundation
 
-@IBDesignable public class VelezaSurveysPhotosWidget: VelezaWidget {
+public class VelezaSurveysPhotosWidget: VelezaWidget {
     
     @IBInspectable var padding: CGFloat = 20.0 {
         didSet {
