@@ -1,0 +1,6 @@
+framework module Pods_VelezaSDK {
+  umbrella header "Pods-VelezaSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
