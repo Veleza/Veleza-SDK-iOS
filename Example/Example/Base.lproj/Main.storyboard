@@ -119,29 +119,29 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FCz-pK-FpE">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="98"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="242"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-zo-5kW">
                                                 <rect key="frame" x="37.5" y="0.0" width="300" height="28"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo rows" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-dh-J0E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="81.5" height="28"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Widget padding" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-dh-J0E">
+                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="28"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lKE-QM-gC6">
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="lKE-QM-gC6">
                                                         <rect key="frame" x="180" y="0.0" width="120" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="8xy-JQ-eFC"/>
                                                         </constraints>
                                                         <segments>
-                                                            <segment title="1"/>
-                                                            <segment title="2"/>
-                                                            <segment title="3"/>
+                                                            <segment title="0"/>
+                                                            <segment title="20"/>
+                                                            <segment title="40"/>
                                                         </segments>
                                                         <connections>
-                                                            <action selector="setPhotoRowCountWithSender:" destination="qq1-9o-exY" eventType="valueChanged" id="OVf-gE-usY"/>
+                                                            <action selector="setWidgetPaddingWithSender:" destination="qq1-9o-exY" eventType="valueChanged" id="bfZ-nQ-Grd"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
@@ -149,8 +149,92 @@
                                                     <constraint firstAttribute="width" constant="300" id="Q8N-hL-tJf"/>
                                                 </constraints>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qcj-Fq-leB">
+                                                <rect key="frame" x="37.5" y="48" width="300" height="28"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo rows" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-qz-Dya">
+                                                        <rect key="frame" x="0.0" y="0.0" width="81.5" height="28"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tYw-K9-VyL">
+                                                        <rect key="frame" x="180" y="0.0" width="120" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="Lfo-bI-guI"/>
+                                                        </constraints>
+                                                        <segments>
+                                                            <segment title="1"/>
+                                                            <segment title="2"/>
+                                                            <segment title="3"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="setPhotoRowCountWithSender:" destination="qq1-9o-exY" eventType="valueChanged" id="lOV-NW-Elj"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="U0L-II-EOK"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yOJ-W3-SaQ">
+                                                <rect key="frame" x="37.5" y="96" width="300" height="28"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxB-gL-4aZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="28"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="T6u-1U-qWw">
+                                                        <rect key="frame" x="180" y="0.0" width="120" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="dLE-mc-u8R"/>
+                                                        </constraints>
+                                                        <segments>
+                                                            <segment title="0"/>
+                                                            <segment title="10"/>
+                                                            <segment title="20"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="setPhotoSpacingWithSender:" destination="qq1-9o-exY" eventType="valueChanged" id="3eR-UJ-SOg"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="IOl-IY-YXa"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nbe-2J-W3A">
+                                                <rect key="frame" x="37.5" y="144" width="300" height="28"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqf-5D-6Kx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="95.5" height="28"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="r39-16-kiN">
+                                                        <rect key="frame" x="180" y="0.0" width="120" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="Y9f-Fw-NHL"/>
+                                                        </constraints>
+                                                        <segments>
+                                                            <segment title="2"/>
+                                                            <segment title="4"/>
+                                                            <segment title="6"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="setSurveyCountWithSender:" destination="qq1-9o-exY" eventType="valueChanged" id="2kA-N8-Wdp"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="wQE-zC-ca8"/>
+                                                </constraints>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NY7-6M-To6" customClass="VelezaSurveysPhotosWidget" customModule="VelezaSDK">
-                                                <rect key="frame" x="0.0" y="48" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="192" width="375" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="200" id="SUc-VW-XZu"/>
