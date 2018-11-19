@@ -10,7 +10,7 @@ import Foundation
 
 public class VelezaSurveysPhotosWidget: VelezaWidget {
     
-    @IBInspectable var padding: CGFloat = 20.0 {
+    @IBInspectable public var padding: CGFloat = 20.0 {
         didSet {
             postGrid.padding = padding
             footerWidthConstraint?.constant = padding * -2
@@ -18,19 +18,19 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
         }
     }
     
-    @IBInspectable var imageRows: Int = 1 {
+    @IBInspectable public var imageRows: Int = 1 {
         didSet {
             postGrid.rows = imageRows
         }
     }
     
-    @IBInspectable var imageSpacing: CGFloat = 10 {
+    @IBInspectable public var imageSpacing: CGFloat = 10 {
         didSet {
             postGrid.spacing = imageSpacing
         }
     }
     
-    @IBInspectable var visibleSurveys: Int = 4 {
+    @IBInspectable public var visibleSurveys: Int = 4 {
         didSet {
             surveysView.visibleSurveys = visibleSurveys
         }
