@@ -79,4 +79,4 @@ To see more ways to use the widget and it's configurations, look into [example p
 
 Add VelezaSDK to your `Podfile` and run `pod install`:
 
-    pod 'VelezaSDK', :git => 'https://github.com/Veleza/Veleza-SDK-iOS.git'
+    pod 'VelezaSDK'
