@@ -7,6 +7,10 @@ SDK with integratable Veleza UGC widgets
 To use this widget, add **VelezaSurveysPhotosWidget** view to your controller and set product's GTIN:
 
 ```swift
+import VelezaSDK
+
+...
+
 let widget = VelezaSurveysPhotosWidget()
 
 view.addSubview(widget)
