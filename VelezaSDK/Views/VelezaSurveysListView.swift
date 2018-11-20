@@ -22,6 +22,8 @@ import UIKit
         }
     }
     
+    weak var layoutDelegate: VelezaWidgetLayoutDelegate?
+
     var trackingData: [String: String] = [:]
 
     var surveys: [Any] = [
@@ -176,7 +178,7 @@ import UIKit
         
             self.containerHeightConstraint?.constant = CGFloat(count) * 41.0
 
-//            self.layoutIfNeeded()
+            self.layoutDelegate?.velezaWidgetNeedsLayoutUpdate()
             self.window?.layoutIfNeeded()
         }) { (finished) in
             let arrangedViews = self.stackView.arrangedSubviews

@@ -8,9 +8,23 @@
 
 import UIKit
 
-public class VelezaWidget: UIView {
+@objc public protocol VelezaWidgetDelegate: AnyObject {
     
-    @IBInspectable var identifier: String? {
+    func velezaWidget(_ widget: VelezaWidget, shouldBeDisplayed: Bool)
+    
+    func velezaWidget(needsLayoutUpdateFor widget: VelezaWidget)
+    
+}
+
+@objc public protocol VelezaWidgetLayoutDelegate: AnyObject {
+    
+    func velezaWidgetNeedsLayoutUpdate()
+    
+}
+
+public class VelezaWidget: UIView, VelezaWidgetLayoutDelegate {
+    
+    @IBInspectable public var identifier: String? {
         didSet {
             if let len = identifier?.count, len > 0 {
                 request()
@@ -18,6 +32,8 @@ public class VelezaWidget: UIView {
         }
     }
     
+    @IBOutlet public weak var delegate: VelezaWidgetDelegate?
+
     var trackingData: [String: String] = [:]
     
     var footer = VelezaFooterView()
@@ -38,6 +54,10 @@ public class VelezaWidget: UIView {
     
     func setup() {
         footer.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    public func velezaWidgetNeedsLayoutUpdate() {
+        self.delegate?.velezaWidget(needsLayoutUpdateFor: self)
     }
     
 }

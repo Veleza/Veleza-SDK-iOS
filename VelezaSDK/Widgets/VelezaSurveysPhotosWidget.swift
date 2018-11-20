@@ -69,14 +69,17 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
                 }
 
                 VelezaSDK.amplitude?.logEvent("Widget - Create", withEventProperties: self.trackingData)
+                self.delegate?.velezaWidget(self, shouldBeDisplayed: false)
                 return
             }
             
             VelezaSDK.amplitude?.logEvent("Widget - Error", withEventProperties: self.trackingData)
+            self.delegate?.velezaWidget(self, shouldBeDisplayed: false)
         }) { (error) in
             VelezaSDK.amplitude?.logEvent("Widget - Error", withEventProperties: [
                 "error" : error.debugDescription,
             ])
+            self.delegate?.velezaWidget(self, shouldBeDisplayed: false)
         }
     }
     
@@ -95,6 +98,7 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
                     postGrid.apiModel = model
                     postGrid.total = total
                     postGrid.setup()
+                    postGrid.layoutDelegate = self
                     addSubview(postGrid)
                     postGrid.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
                     postGrid.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
@@ -103,10 +107,14 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
             }
         }
         
+        var hasSurveys = false
         if let surveys = data["answers"] as? [Any], surveys.count > 0 {
+            hasSurveys = true
+            
             surveysView.trackingData = trackingData
             surveysView.visibleSurveys = visibleSurveys
             surveysView.surveys = surveys
+            surveysView.layoutDelegate = self
             addSubview(surveysView)
             surveysView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             
@@ -121,6 +129,11 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
             surveysWidthConstraint!.isActive = true
         }
         
+        if !hasPosts && !hasSurveys {
+            self.delegate?.velezaWidget(self, shouldBeDisplayed: false)
+            return
+        }
+        
         if let lang = data["lang"] as? [String: Any] {
             if let footer = lang["ratings_and_images_from"] as? String {
                 self.footer.text = footer
@@ -133,6 +146,9 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
 
         footerWidthConstraint = footer.widthAnchor.constraint(equalTo: widthAnchor, constant: padding * -2)
         footerWidthConstraint!.isActive = true
+        
+        self.delegate?.velezaWidget(self, shouldBeDisplayed: true)
+        self.delegate?.velezaWidget(needsLayoutUpdateFor: self)
     }
     
 }

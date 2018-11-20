@@ -36,6 +36,8 @@ class VelezaPostGrid: UIView {
         }
     }
 
+    weak var layoutDelegate: VelezaWidgetLayoutDelegate?
+    
     var apiT: String = String(Int(Date().timeIntervalSince1970 / 60))
     var apiGoal: String? = "engagement"
     var apiModel: String?
@@ -43,7 +45,7 @@ class VelezaPostGrid: UIView {
     var apiPath: String?
 
     var trackingData: [String: String] = [:]
-
+    
     fileprivate var selectedImageIndex: Int = 0
     fileprivate var posts: [Any] = []
     fileprivate var pageSize = 10
@@ -108,6 +110,8 @@ class VelezaPostGrid: UIView {
         layout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
         
         collectionView?.reloadData()
+        
+        layoutDelegate?.velezaWidgetNeedsLayoutUpdate()
     }
     
     fileprivate func request(page: Int) {
