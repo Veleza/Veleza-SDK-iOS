@@ -13,6 +13,7 @@ class SurveysPhotosTableViewController: UITableViewController {
     
     var widgetCell: SurveysPhotosTableViewWidgetCell?
     var widgetIndexPath = IndexPath(row: 2, section: 1)
+    var widgetIsLoaded = false
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,11 +29,8 @@ class SurveysPhotosTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath == widgetIndexPath {
-            if let cell = widgetCell, cell.loaded {
-                return cell
-            }
+        if indexPath == widgetIndexPath && widgetIsLoaded {
+            return widgetCell!
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
@@ -54,8 +52,8 @@ extension SurveysPhotosTableViewController: VelezaWidgetDelegate {
     }
     
     func velezaWidget(_ widget: VelezaWidget, shouldBeDisplayed: Bool) {
-        if widgetCell?.loaded != shouldBeDisplayed {
-            widgetCell?.loaded = shouldBeDisplayed
+        if widgetIsLoaded != shouldBeDisplayed {
+            widgetIsLoaded = shouldBeDisplayed
             
             self.tableView.beginUpdates()
             self.tableView.reloadRows(at: [widgetIndexPath], with: UITableView.RowAnimation.automatic)
@@ -74,8 +72,6 @@ extension SurveysPhotosTableViewController: VelezaWidgetDelegate {
 class SurveysPhotosTableViewWidgetCell: UITableViewCell {
     
     @IBOutlet var widget: VelezaSurveysPhotosWidget?
-
-    var loaded = false
 
 }
 
