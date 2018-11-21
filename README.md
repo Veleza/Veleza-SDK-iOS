@@ -1,4 +1,7 @@
 # Veleza SDK
+
+[![Build status](https://badge.buildkite.com/87a946d2e3261f604a9daa73eb8870ee66cca6e31a288c163f.svg?theme=9c0,f93,0ad)](https://buildkite.com/veleza/veleza-sdk-ios)
+
 SDK with integratable Veleza UGC widgets
 
 ## Integration
