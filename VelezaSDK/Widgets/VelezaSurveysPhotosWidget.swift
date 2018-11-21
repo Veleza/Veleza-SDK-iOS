@@ -42,14 +42,40 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
     weak var surveysWidthConstraint: NSLayoutConstraint?
     weak var footerWidthConstraint: NSLayoutConstraint?
     
+    func reportResponse(identifier: String, response: [String: Any]) {
+        guard let data = response["data"] as? [String: Any] else {
+            return
+        }
+        
+        guard let path = data["track"] as? String else {
+            return
+        }
+        
+        var params: [String : String] = [
+            "url" : identifier,
+            "host" : Bundle.main.bundleIdentifier!,
+            "widget" : "SurveysPhotos",
+            "identifier": identifier,
+            "device" : "mobile",
+        ]
+        
+        if let trackData = data["trackData"] as? [String: String] {
+            params += trackData
+        }
+        
+        VelezaAPIRequest(withMethod: "POST", path: path, params: params).execute(onSuccess: { (_, _, _) in }) { (error) in }
+    }
+    
     override func request() {
+        self.trackingData["widget"] = "SurveysPhotos"
+        self.trackingData["app"] = Bundle.main.bundleIdentifier!
+        
         let path = String(format: "widgets/%@/surveys_photos/%@", VelezaSDK.clientId!, identifier!)
         let params = [
             "rows": String(imageRows),
         ]
         VelezaAPIRequest(withMethod: "GET", path: path, params: params).execute(onSuccess: { (_, _, response) in
-            if let identifier = response["identifier"] as? String, let widget = response["widget_name"] as? String {
-                self.trackingData["widget"] = widget
+            if let identifier = response["identifier"] as? String {
                 self.trackingData["identifier"] = identifier
                 if let data = response["data"] as? [String: Any] {
                     if let trackData = data["trackData"] as? [String: Any] {
@@ -62,6 +88,7 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
                     
                         if trackData["state"] as? String == "show" {
                             VelezaSDK.amplitude?.logEvent("Widget - Create", withEventProperties: self.trackingData)
+                            self.reportResponse(identifier: identifier, response: response)
                             self.setup(data: data)
                             return
                         }
@@ -69,6 +96,7 @@ public class VelezaSurveysPhotosWidget: VelezaWidget {
                 }
 
                 VelezaSDK.amplitude?.logEvent("Widget - Create", withEventProperties: self.trackingData)
+                self.reportResponse(identifier: identifier, response: response)
                 self.delegate?.velezaWidget(self, shouldBeDisplayed: false)
                 return
             }

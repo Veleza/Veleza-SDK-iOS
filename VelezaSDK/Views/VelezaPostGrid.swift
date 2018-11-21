@@ -123,7 +123,6 @@ class VelezaPostGrid: UIView {
         
         let offset = page * pageSize
         let params = [
-            "client_id" : VelezaSDK.clientId!,
             "_t" : apiT,
             "goal" : apiGoal!,
             "model" : apiModel!,

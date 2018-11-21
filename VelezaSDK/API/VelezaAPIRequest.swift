@@ -27,6 +27,7 @@ class VelezaAPIRequest {
             "platform" : "widget-ios",
             "device" : "mobile",
             "lang" : Bundle.main.preferredLocalizations.first ?? "en",
+            "client_id" : VelezaSDK.clientId!,
         ]
     }
     
