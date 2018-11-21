@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 If you don't have client ID, you can obtain it from https://veleza.com/business or by contacting us at hello@veleza.com
 
 ## Photos & Surveys
-[Photos & Surveys widget](VelezaSDK/Widgets/VelezaSurveysPhotosWidget.swift) displays people photos with looks, where given product has been used, and survey ratings about various features of the product.
+[Photos & Surveys widget](VelezaSDK/Widgets/VelezaSurveysPhotosWidget.swift) displays people photos with looks with a given product, and survey ratings about various features of the product.
 
 To use this widget, add **VelezaSurveysPhotosWidget** view to your controller and set product's GTIN:
 
