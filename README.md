@@ -1,6 +1,34 @@
 # Veleza SDK
 SDK with integratable Veleza UGC widgets
 
+## Integration
+
+To start working with SDK, you must initialize it first. To do that, call **VelezaSDK.initialize(clientId:)** in your **AppDelegate** method **func application(application, didFinishLaunchingWithOptions)** and pass your client ID:
+
+```swift
+import VelezaSDK
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    ...
+
+    func application(
+        _ application: UIApplication, 
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        
+        VelezaSDK.initialize(clientId: "[your-client-id]")
+        
+        return true
+    }
+    
+    ...
+}
+```
+
+If you don't have client ID, you can obtain it from https://veleza.com/business or by contacting us at hello@veleza.com
+
 ## Photos & Surveys
 [Photos & Surveys widget](VelezaSDK/Widgets/VelezaSurveysPhotosWidget.swift) displays people photos with looks, where given product has been used, and survey ratings about various features of the product.
 
